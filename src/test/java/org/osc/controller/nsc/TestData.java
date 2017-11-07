@@ -24,23 +24,31 @@ import org.osc.controller.nsc.entities.NetworkElementEntity;
 
 class TestData {
 
-     private static final String EADDR2_STR = "192.168.0.12";
+    private static final String EADDR2_STR = "192.168.0.12";
 
-     private static final String EADDR1_STR = "192.168.0.11";
+    private static final String EADDR1_STR = "192.168.0.11";
 
-     private static final String IADDR2_STR = "10.4.3.2";
+    private static final String IADDR2_STR = "10.4.3.2";
 
-     private static final String IADDR1_STR = "10.4.3.1";
+    private static final String IADDR1_STR = "10.4.3.1";
 
-     private static final String EMAC2_STR = "ee:ff:aa:bb:cc:02";
+    private static final String EMAC2_STR = "ee:ff:aa:bb:cc:02";
 
-     private static final String EMAC1_STR = "ee:ff:aa:bb:cc:01";
+    private static final String EMAC1_STR = "ee:ff:aa:bb:cc:01";
 
-     private static final String IMAC1_STR = "ff:ff:aa:bb:cc:01";
+    private static final String IMAC1_STR = "ff:ff:aa:bb:cc:01";
 
-     private static final String IMAC2_STR = "ff:ff:aa:bb:cc:02";
+    private static final String IMAC2_STR = "ff:ff:aa:bb:cc:02";
 
-     private static final String INSPMAC1_STR = "aa:aa:aa:bb:cc:01";
+    private static final String ADDR1_STR = "192.168.0.14";
+
+    private static final String ADDR2_STR = "10.4.3.3";
+
+    private static final String MAC1_STR = "dd:ff:aa:bb:cc:01";
+
+    private static final String MAC2_STR = "dd:ff:aa:bb:cc:02";
+
+    private static final String INSPMAC1_STR = "aa:aa:aa:bb:cc:01";
 
     public static InspectionHookEntity inspectionHook;
     public static InspectionPortEntity inspectionPort;
@@ -48,6 +56,7 @@ class TestData {
     public static NetworkElementEntity ingress;
     public static NetworkElementEntity egress;
     public static NetworkElementEntity inspected;
+    public static NetworkElementEntity port;
 
     public static void setupDataObjects() {
         inspectionHook = new InspectionHookEntity();
@@ -57,16 +66,21 @@ class TestData {
         ingress = new NetworkElementEntity();
         egress = new NetworkElementEntity();
         inspected = new NetworkElementEntity();
+        port = new NetworkElementEntity();
 
         ingress.setElementId(IMAC1_STR + IMAC1_STR);
         egress.setElementId(EMAC1_STR + EMAC1_STR);
         inspected.setElementId("iNsPeCtEdPoRt");
+        port.setElementId(MAC1_STR + MAC2_STR);
 
         ingress.setMacAddresses(asList(IMAC1_STR, IMAC2_STR));
         ingress.setPortIPs(asList(IADDR1_STR, IADDR2_STR));
 
         egress.setMacAddresses(asList(EMAC1_STR, EMAC2_STR));
         egress.setPortIPs(asList(EADDR1_STR, EADDR2_STR));
+
+        port.setMacAddresses(asList(MAC1_STR, MAC2_STR));
+        port.setPortIPs(asList(ADDR1_STR, ADDR2_STR));
 
         inspected.setMacAddresses(asList(INSPMAC1_STR));
 

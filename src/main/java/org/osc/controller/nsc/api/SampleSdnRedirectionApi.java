@@ -498,7 +498,7 @@ public class SampleSdnRedirectionApi implements SdnRedirectionApi {
 
     public List<String> getInspectionHooksIds() throws Exception {
 
-        return this.txControl.supports(() -> {
+        return this.txControl.required(() -> {
             return this.utils.txInspectionHookEntities().stream().map(InspectionHookEntity::getHookId)
                     .collect(Collectors.toList());
         });
@@ -532,7 +532,7 @@ public class SampleSdnRedirectionApi implements SdnRedirectionApi {
 
     public List<String> getInspectionPortsIds() throws Exception {
 
-        return this.txControl.supports(() -> {
+        return this.txControl.required(() -> {
             return this.utils.txInspectionPortEntities().stream().map(InspectionPortEntity::getElementId)
                     .collect(Collectors.toList());
         });
@@ -595,7 +595,7 @@ public class SampleSdnRedirectionApi implements SdnRedirectionApi {
 
     public List<String> getPortIds() throws Exception {
 
-        return this.txControl.supports(() -> {
+        return this.txControl.required(() -> {
             return this.utils.txNetworkElementEntities().stream().map(NetworkElementEntity::getElementId)
                     .collect(Collectors.toList());
         });
@@ -603,7 +603,7 @@ public class SampleSdnRedirectionApi implements SdnRedirectionApi {
 
     public NetworkElementEntity getPort(String id) throws Exception {
 
-        return this.txControl.supports(() -> {
+        return this.txControl.required(() -> {
 
             return this.utils.txNetworkElementEntityByElementId(id);
         });
